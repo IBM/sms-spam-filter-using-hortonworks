@@ -1,4 +1,4 @@
-# Develop and Deploy an SMS spam filter with Hortonworks Data Platform 
+# Discover, Train and Deploy Spam Filter Model on Hortonworks Data Platform using DSX Local
 
 The goal of this code pattern is to demonstrate the key integration points that allow data scientists to run IBM's Data Science Experience Local (DSX Local) built on the Hortonworks Data Platform (HDP).
 
