@@ -26,9 +26,10 @@ In order for the DSX Local to be able to utilize the resources (spark, compute) 
 
 This repo contains 8 jupyter notebooks and 6 scripts that are used to illustarte the three scenarios mentioned above.
 
-![](doc/source/images/)
 
-![](doc/source/images/)
+![](doc/source/images/Jupyter-notebooks-list.png)
+
+![](doc/source/images/scripts-list.png)
 
 When you have completed this code pattern, you will understand how to:
 
