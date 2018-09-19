@@ -12,6 +12,8 @@ There are three different examples or illustrations to the problem:
 
 * Package the spam filter model as a python egg in DSX Local, train and deploy the model package levaraging both the remote spark and compute in HDP cluster within DSX Local
 
+In order for the DSX Local to be able to utilize the resources (spark, compute) of the HDP cluster, DSX Hadoop Integration Service (DSXHI) must be installed on the edge node of the HDP cluster and the DSXHI must be registered with the DSX Local. 
+
 > **What is HDP?** Hortonworks Data Platform (HDP) is a massively scalable platform for storing, processing and analyzing large volumes of data. HDP consists of the essential set of Apache Hadoop projects including MapReduce, Hadoop Distributed File System (HDFS), HCatalog, Pig, Hive, HBase, Zookeeper and Ambari.
 
   ![](doc/source/images/hdp_arch.png)
@@ -22,13 +24,19 @@ There are three different examples or illustrations to the problem:
 
 > **What is the IBM DSXHI?** DSX Hadoop Integration Service (DSXHI) is a service that can be installed on a Hadoop edge node to allow DSX Local Version 1.2 or later clusters to securely access data residing on the Hadoop cluster, submit interactive Spark jobs, build models, and schedule jobs that run as a YARN application on the Hadoop cluster.
 
-This repo contains 
+This repo contains 8 jupyter notebooks and 6 scripts that are used to illustarte the three scenarios mentioned above.
+
+![](doc/source/images/)
+
+![](doc/source/images/)
 
 When you have completed this code pattern, you will understand how to:
 
-* Load data into Spark DataFrames and use Spark's machine learning library (MLlib) to train a 
-* 
-* 
+* Load data into Spark DataFrames and use Spark's machine learning library (MLlib) to develop, train and deploy the Spam Filter model
+* Load the data into pandas DataFrames and use Scikit-learn machine learning lbrary to develop, train and deploy the spam Filter model
+* Use sparkmagics library to connect to the remote spark service in HDP cluter through DSXHI
+* Use sparkmagics library to push the python virtual environment containing the Scikit-learn library to the remote HDP cluster through DSXHI
+* Package the spam filter model as a python egg and distribute the egg to the remote HDP cluster through DSXHI 
 
 ## Flow
 
@@ -76,7 +84,11 @@ Once your HDP cluster is deployed, at a minimum, install the following services 
 
 https://content-dsxlocal.mybluemix.net/docs/content/local/welcome.html
 
-## Install DSX Hadoop Integration Service (DSXHI) to integrate DSX Local with HDP
+## Install DSX Hadoop Integration Service (DSXHI) with HDP
+
+https://content-dsxlocal.mybluemix.net/docs/content/local/hdp.html#hdp__option-1
+
+## Register DSX Hadoop Integration Service (DSXHI) with DSXL
 
 https://content-dsxlocal.mybluemix.net/docs/content/local/hadoopintegration.html
 
