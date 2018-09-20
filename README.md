@@ -132,16 +132,9 @@ Follow these steps to setup the proper environment to run our notebooks locally.
 1. [Clone the repo](#1-clone-the-repo)
 1. [Create project in IBM DSX Local](#2-create-project-in-ibm-dsx-local)
 1. [Create project assets](#3-create-project-assets)
-1. [Run the notebooks to create our model](#4-run-the-notebooks-to-create-our-model)
-1. [Commit changes to DSX Local Master Repository](#6-commit-changes-to-dsx-local-master-repository)
-1. [Create release project in IBM Deployment Manager](#7-create-release-project-in-ibm-deployment-manager)
-1. [Deploy our model as a web service](#8-deploy-our-model-as-a-web-service)
-1. [Deploy our scripts as a job](#9-deploy-our-scripts-as-a-job)
-1. [Bring deployments on-line](#10-bring-deployments-on-line)
-1. [Gather API endpoints data for use in scripts](#11-gather-api-endpoints-data-for-use-in-scripts)
-1. [Modify scripts in DSX Local](#12-modify-scripts-in-dsx-local)
-1. [Run scripts locally to test](#13-run-scripts-locally-to-test)
-1. [Manage your model with the Deployment Manager](#14-manage-your-model-with-the-deployment-manager)
+1. [Run the notebooks listed in each scenario to train and deploy the Spam Filter Model](#4-run-the-notebooks-listed-in-each-scenario-to-train-and-deploy-the-spam-filter-model)
+1. [Commit changes to DSX Local Master Repository](#5-commit-changes-to-dsx-local-master-repository)
+
 
 ### 1. Clone the repo
 ```
@@ -179,7 +172,25 @@ For our project, we need to add our notebooks and scripts. To add our notebooks:
 https://raw.githubusercontent.com/IBM/model-mgmt-on-dsx-local-and-hortonworks/master/notebooks/pca-features.ipynb
 ```
 
-* Repeat this step to add the second notebook, using the following URL:
+* Repeat this step to add the remaining 7 notebooks, using the following URLs:
+```
+https://raw.githubusercontent.com/IBM/model-mgmt-on-dsx-local-and-hortonworks/master/notebooks/pca-modeling.ipynb
+```
+```
+https://raw.githubusercontent.com/IBM/model-mgmt-on-dsx-local-and-hortonworks/master/notebooks/pca-modeling.ipynb
+```
+```
+https://raw.githubusercontent.com/IBM/model-mgmt-on-dsx-local-and-hortonworks/master/notebooks/pca-modeling.ipynb
+```
+```
+https://raw.githubusercontent.com/IBM/model-mgmt-on-dsx-local-and-hortonworks/master/notebooks/pca-modeling.ipynb
+```
+```
+https://raw.githubusercontent.com/IBM/model-mgmt-on-dsx-local-and-hortonworks/master/notebooks/pca-modeling.ipynb
+```
+```
+https://raw.githubusercontent.com/IBM/model-mgmt-on-dsx-local-and-hortonworks/master/notebooks/pca-modeling.ipynb
+```
 ```
 https://raw.githubusercontent.com/IBM/model-mgmt-on-dsx-local-and-hortonworks/master/notebooks/pca-modeling.ipynb
 ```
@@ -196,18 +207,21 @@ To add our scripts:
 
 * Add the following scripts:
 ```
-scripts/feature_engineering.py
-scripts/extract_and_score.py
-scripts/model_scoring.py
+scripts/
+scripts/
+scripts/
+scripts/
+scripts/
+scripts/
 ```
 
-### 4. Run the notebooks to create our model
+### 4. Run the notebooks listed in each scenario to train and deploy the Spam Filter Model
 
 To view our notebooks, Select `Notebooks` in the project `Assets` list.
 
-![](doc/source/images/dsx-local-notebook-list-2.png)
+![](doc/source/images/Jupyter-notebooks-list.png)
 
-First, some background on how executing a notebooks: 
+First, some background on how to execute a notebook: 
 
 > When a notebook is executed, what is actually happening is that each code cell in
 the notebook is executed, in order, from top to bottom.
@@ -233,19 +247,7 @@ format is `In [x]:`. Depending on the state of the notebook, the `x` can be:
     panel. Here you can schedule your notebook to be executed once at some future
     time, or repeatedly at your specified interval.
 
-To run a notebook, simply click on the notebook name from the `Notebooks` list.
-
-* Run the `pca-features` notebook first. It reads in and transforms the wine data set. It also creates data files that will be required by the next notebook.
-
-* Run the `pca-modeling` notebook, which generates and saves our data model.
-
-Once the model is created, you can view it by selecting `Models` in the project `Asset` list. Note that it is given a default version number.
-
-![](doc/source/images/dsx-local-model-list.png)
-
-> Note: After executing the notebooks, you may be wondering why we just didn't combine all of the code into just a single notebook. The reason is simply to seperate out the the data processing steps from the model creation steps. This allows us to process any new data in the future without effecting our current model. In fact, this is exactly what should be done with any new data - score it against the current model first to determine if the results are still acceptable. If not, we can then run the second notebook to generate a new model.
->
-> As you will see later, running the first notebook will be done by running a script in our project (`scripts/feature_engineering.py`). This script was initially created by loading the `pca-features` notebook into Jupyter, then exporting the notebook cells into a `python` script (use the menu options `File` -> `Download as` -> `Python (.py)`). We only had to modify the script slightly to include some code to handling data versioning.
+For specific details regarding each cell please follow through the steps provided below.
 
 ### 5. Commit changes to DSX Local Master Repository
 
@@ -256,22 +258,6 @@ After making changes to your project, you will be occasionally reminded to commi
 Now that we have added our notebooks and scripts, and generated our model, let's go ahead and do that. Commit and push all of our new assets, and set the version tag to `v1.0`.
 
 ![](doc/source/images/dsx-local-push-project.png)
-
-### 6. Commit changes to DSX Local Master Repository
-
-### 6. Commit changes to DSX Local Master Repository
-
-### 6. Commit changes to DSX Local Master Repository
-
-### 6. Commit changes to DSX Local Master Repository
-
-### 6. Commit changes to DSX Local Master Repository
-
-### 6. Commit changes to DSX Local Master Repository
-
-### 6. Commit changes to DSX Local Master Repository
-
-### 6. Commit changes to DSX Local Master Repository
 
 # Troubleshooting
 
