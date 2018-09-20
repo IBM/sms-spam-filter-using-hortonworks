@@ -26,8 +26,14 @@ In order for the DSX Local to be able to utilize the resources (spark, compute) 
 
 This repo contains 8 jupyter notebooks and 6 scripts that are used to illustarte the three scenarios mentioned above.
 
-
 ![](doc/source/images/Jupyter-notebooks-list.png)
+
+**Scenario 1**: Spam Filter on local spark.ipynb (local pyspark) and Spam Filter on remote spark.ipynb (remote pyspark)
+
+**Scenario 2**: Spam Filter using Scikit learn on local spark.ipynb (local python env) and Spam Filter using Scikit learn on remote spark.ipynb (remote python env)
+
+**Scenario 3**: Building the Spam Filter Egg.ipynb, SpamFilter using egg deploy on remote Spark.ipynb (remote pyspark egg) and 
+Building the Spam Filter Scikit Egg.ipynb, SpamFilter Scikit using egg deploy on remote Spark.ipynb (remote python egg)
 
 ![](doc/source/images/scripts-list.png)
 
