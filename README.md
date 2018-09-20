@@ -130,10 +130,9 @@ https://content-dsxlocal.mybluemix.net/docs/content/local/hadoopintegration.html
 Follow these steps to setup the proper environment to run our notebooks locally.
 
 1. [Clone the repo](#1-clone-the-repo)
-1. [Download and move data to HDFS on Hortonworks](#2-download-and-move-data-to-hdfs-on-hortonworks)
-1. [Create project in IBM DSX Local](#3-create-project-in-ibm-dsx-local)
-1. [Create project assets](#4-create-project-assets)
-1. [Run the notebooks to create our model](#5-run-the-notebooks-to-create-our-model)
+1. [Create project in IBM DSX Local](#2-create-project-in-ibm-dsx-local)
+1. [Create project assets](#3-create-project-assets)
+1. [Run the notebooks to create our model](#4-run-the-notebooks-to-create-our-model)
 1. [Commit changes to DSX Local Master Repository](#6-commit-changes-to-dsx-local-master-repository)
 1. [Create release project in IBM Deployment Manager](#7-create-release-project-in-ibm-deployment-manager)
 1. [Deploy our model as a web service](#8-deploy-our-model-as-a-web-service)
@@ -148,9 +147,131 @@ Follow these steps to setup the proper environment to run our notebooks locally.
 ```
 git clone https://github.com/IBM/sms-spam-filter-using-hortonworks.git
 ```
+### 2. Create project in IBM DSX Local
 
-### 2. Download and move data to HDFS on Hortonworks
+In DSX Local, we use projects as a container for all of our related assets. To create a project:
 
+* From the DSX Local home page, select the `Add Project` button.
+
+![](doc/source/images/dsx-local-project-list.png)
+
+* Enter your project name and press the `Create` button.
+
+![](doc/source/images/dsx-local-create-project.png)
+
+### 3. Create project assets
+
+Once created, you can view all of the project assets by selecting the `Assets` tab from the project's home page.
+
+![](doc/source/images/dsx-local-notebook-list.png)
+
+For our project, we need to add our notebooks and scripts. To add our notebooks:
+
+* Select `Notebooks` in the project `Assets` list, then press the `Add Notebook` button.
+
+* Enter a unique notebook name and use the `From URL` option to load the notebook from the github repo.
+
+![](doc/source/images/dsx-local-create-notebook-1.png)
+
+* Enter this URL:
+
+```
+https://raw.githubusercontent.com/IBM/model-mgmt-on-dsx-local-and-hortonworks/master/notebooks/pca-features.ipynb
+```
+
+* Repeat this step to add the second notebook, using the following URL:
+```
+https://raw.githubusercontent.com/IBM/model-mgmt-on-dsx-local-and-hortonworks/master/notebooks/pca-modeling.ipynb
+```
+
+To add our scripts:
+
+* Select `Scripts` in the project `Assets` list, then press the `Add Script` button.
+
+![](doc/source/images/dsx-local-scripts-list.png)
+
+* Enter a unique script name and click on the `From File` tab. Use the `Drag and Drop` option to load the script file from your local repo.
+
+![](doc/source/images/dsx-local-create-script.png)
+
+* Add the following scripts:
+```
+scripts/feature_engineering.py
+scripts/extract_and_score.py
+scripts/model_scoring.py
+```
+
+### 4. Run the notebooks to create our model
+
+To view our notebooks, Select `Notebooks` in the project `Assets` list.
+
+![](doc/source/images/dsx-local-notebook-list-2.png)
+
+First, some background on how executing a notebooks: 
+
+> When a notebook is executed, what is actually happening is that each code cell in
+the notebook is executed, in order, from top to bottom.
+>
+> Each code cell is selectable and is preceded by a tag in the left margin. The tag
+format is `In [x]:`. Depending on the state of the notebook, the `x` can be:
+>
+>* A blank, this indicates that the cell has never been executed.
+>* A number, this number represents the relative order this code step was executed.
+>* A `*`, which indicates that the cell is currently executing.
+>
+>There are several ways to execute the code cells in your notebook:
+>
+>* One cell at a time.
+>   * Select the cell, and then press the `Play` button in the toolbar.
+>* Batch mode, in sequential order.
+>   * From the `Cell` menu bar, there are several options available. For example, you
+    can `Run All` cells in your notebook, or you can `Run All Below`, that will
+    start executing from the first cell under the currently selected cell, and then
+    continue executing all cells that follow.
+>* At a scheduled time.
+>   * Press the `Schedule` button located in the top right section of your notebook
+    panel. Here you can schedule your notebook to be executed once at some future
+    time, or repeatedly at your specified interval.
+
+To run a notebook, simply click on the notebook name from the `Notebooks` list.
+
+* Run the `pca-features` notebook first. It reads in and transforms the wine data set. It also creates data files that will be required by the next notebook.
+
+* Run the `pca-modeling` notebook, which generates and saves our data model.
+
+Once the model is created, you can view it by selecting `Models` in the project `Asset` list. Note that it is given a default version number.
+
+![](doc/source/images/dsx-local-model-list.png)
+
+> Note: After executing the notebooks, you may be wondering why we just didn't combine all of the code into just a single notebook. The reason is simply to seperate out the the data processing steps from the model creation steps. This allows us to process any new data in the future without effecting our current model. In fact, this is exactly what should be done with any new data - score it against the current model first to determine if the results are still acceptable. If not, we can then run the second notebook to generate a new model.
+>
+> As you will see later, running the first notebook will be done by running a script in our project (`scripts/feature_engineering.py`). This script was initially created by loading the `pca-features` notebook into Jupyter, then exporting the notebook cells into a `python` script (use the menu options `File` -> `Download as` -> `Python (.py)`). We only had to modify the script slightly to include some code to handling data versioning.
+
+### 5. Commit changes to DSX Local Master Repository
+
+After making changes to your project, you will be occasionally reminded to commit and push your changes to the DSX Local Master Repoisory.
+
+![](doc/source/images/dsx-local-commit-request.png)
+
+Now that we have added our notebooks and scripts, and generated our model, let's go ahead and do that. Commit and push all of our new assets, and set the version tag to `v1.0`.
+
+![](doc/source/images/dsx-local-push-project.png)
+
+### 6. Commit changes to DSX Local Master Repository
+
+### 6. Commit changes to DSX Local Master Repository
+
+### 6. Commit changes to DSX Local Master Repository
+
+### 6. Commit changes to DSX Local Master Repository
+
+### 6. Commit changes to DSX Local Master Repository
+
+### 6. Commit changes to DSX Local Master Repository
+
+### 6. Commit changes to DSX Local Master Repository
+
+### 6. Commit changes to DSX Local Master Repository
 
 # Troubleshooting
 
