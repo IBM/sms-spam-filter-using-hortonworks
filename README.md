@@ -45,7 +45,7 @@ When you have completed this code pattern, you will understand how to:
 * Use sparkmagics library to push the python virtual environment containing the Scikit-learn library to the remote HDP cluster through DSXHI
 * Package the spam filter model as a python egg and distribute the egg to the remote HDP cluster through DSXHI 
 
-## Flow
+## Architecture
 
 ![](doc/source/images/architecture.png)
 
