@@ -31,16 +31,16 @@ This repo contains 8 jupyter notebooks and 6 scripts that are used to illustarte
 ![](doc/source/images/Jupyter-notebooks-list.png)
 
 **Scenario 1 (Run pyspark model in remote HDP cluster)**: <br>
-Spam Filter on local spark.ipynb (pyspark in local) <br>
-Spam Filter on remote spark.ipynb (pyspark in HDP) <br>
+- Spam Filter on local spark.ipynb (pyspark in local) <br>
+- Spam Filter on remote spark.ipynb (pyspark in HDP) <br>
 
 **Scenario 2 (Run scikit-learn model in remote HDP cluster)**: <br>
-Spam Filter using Scikit learn on local spark.ipynb (python env in local) <br>
-Spam Filter using Scikit learn on remote spark.ipynb (python env in HDP) <br>
+- Spam Filter using Scikit learn on local spark.ipynb (python env in local) <br>
+- Spam Filter using Scikit learn on remote spark.ipynb (python env in HDP) <br>
 
 **Scenario 3 (Deploy pyspark and scikit-learn model as egg in remote HDP cluster)**: <br>
-Building the Spam Filter Egg.ipynb, SpamFilter using egg deploy on remote Spark.ipynb (pyspark egg in HDP) <br>
-Building the Spam Filter Scikit Egg.ipynb, SpamFilter Scikit using egg deploy on remote Spark.ipynb (python egg in HDP) <br>
+- Building the Spam Filter Egg.ipynb, SpamFilter using egg deploy on remote Spark.ipynb (pyspark egg in HDP) <br>
+- Building the Spam Filter Scikit Egg.ipynb, SpamFilter Scikit using egg deploy on remote Spark.ipynb (python egg in HDP) <br>
 
 ![](doc/source/images/scripts-list.png)
 
@@ -57,14 +57,14 @@ When you have completed this code pattern, you will understand how to:
 
 ![](doc/source/images/architecture.png)
 
-**Scenario 1***:
+**Scenario 1**:
 1. Load the spam collection dataset using spark context in DSX Local
 2. Use Spark Data Pipeline to extract the TF-IDF features and use Spark MLlib to train the spam filter pyspark model locally
 3. Push the dataset to the remote HDFS user directory in the HDP cluster
 4. Connect to remote spark context in HDP cluster through DSXHI using sparkmagics library
 5. Use %%spark to run the steps 1 and 2 which now uses remote spark context to load, extarct and train the spam filter pyspark model in HDP cluster
 
-**Scenario 2***:
+**Scenario 2**:
 1. Load the spam collection dataset using pandas in DSX Local
 2. Use scikit-learn libraries to extract the Bag of Words features and to train the spam filter python model locally
 3. Push the dataset to the remote HDFS user directory in the HDP cluster
@@ -72,7 +72,7 @@ When you have completed this code pattern, you will understand how to:
 5. Push the python virtual environment loaded with scikit-learn to HDP cluster through DSXHI using sparkmagics library
 6. Use %%spark to run the steps 1 and 2 which now uses remote python compute environment to load, extarct and train the spam filter python model in HDP cluster
 
-**Scenario 3***:
+**Scenario 3**:
 1. Build the Spam filter pyspark model as an egg using the scripts
 2. Build the Spam filter python model as an egg using the scripts
 3. Push the dataset to the remote HDFS user directory in the HDP cluster
