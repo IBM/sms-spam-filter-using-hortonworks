@@ -171,35 +171,35 @@ For our project, we need to add our notebooks and scripts. To add our notebooks:
 
 * Enter a unique notebook name and use the `From URL` option to load the notebook from the github repo.
 
-![](doc/source/images/dsx-local-create-notebook-1.png)
+![](doc/source/images/dsx-local-create-notebook-3.png)
 
 * Enter this URL:
 
 ```
-https://raw.githubusercontent.com/IBM/model-mgmt-on-dsx-local-and-hortonworks/master/notebooks/pca-features.ipynb
+https://raw.githubusercontent.com/IBM/sms-spam-filter-using-hortonworks/master/notebooks/Spam%20Filter%20on%20local%20spark.jupyter.ipynb
 ```
 
 * Repeat this step to add the remaining 7 notebooks, using the following URLs:
 ```
-https://raw.githubusercontent.com/IBM/model-mgmt-on-dsx-local-and-hortonworks/master/notebooks/pca-modeling.ipynb
+https://raw.githubusercontent.com/IBM/sms-spam-filter-using-hortonworks/master/notebooks/Spam%20Filter%20on%20remote%20spark.jupyter.ipynb
 ```
 ```
-https://raw.githubusercontent.com/IBM/model-mgmt-on-dsx-local-and-hortonworks/master/notebooks/pca-modeling.ipynb
+https://raw.githubusercontent.com/IBM/sms-spam-filter-using-hortonworks/master/notebooks/Spam%20Filter%20using%20Scikit%20learn%20on%20local%20spark.jupyter.ipynb
 ```
 ```
-https://raw.githubusercontent.com/IBM/model-mgmt-on-dsx-local-and-hortonworks/master/notebooks/pca-modeling.ipynb
+https://raw.githubusercontent.com/IBM/sms-spam-filter-using-hortonworks/master/notebooks/Spam%20Filter%20using%20Scikit%20learn%20on%20remote%20spark.jupyter.ipynb
 ```
 ```
-https://raw.githubusercontent.com/IBM/model-mgmt-on-dsx-local-and-hortonworks/master/notebooks/pca-modeling.ipynb
+https://raw.githubusercontent.com/IBM/sms-spam-filter-using-hortonworks/master/notebooks/Building%20the%20Spam%20Filter%20Egg.jupyter.ipynb
 ```
 ```
-https://raw.githubusercontent.com/IBM/model-mgmt-on-dsx-local-and-hortonworks/master/notebooks/pca-modeling.ipynb
+https://raw.githubusercontent.com/IBM/sms-spam-filter-using-hortonworks/master/notebooks/Building%20the%20Spam%20Filter%20Scikit%20Egg.jupyter.ipynb
 ```
 ```
-https://raw.githubusercontent.com/IBM/model-mgmt-on-dsx-local-and-hortonworks/master/notebooks/pca-modeling.ipynb
+https://raw.githubusercontent.com/IBM/sms-spam-filter-using-hortonworks/master/notebooks/SpamFilter%20Scikit%20using%20egg%20deploy%20on%20remote%20Spark.jupyter.ipynb
 ```
 ```
-https://raw.githubusercontent.com/IBM/model-mgmt-on-dsx-local-and-hortonworks/master/notebooks/pca-modeling.ipynb
+https://raw.githubusercontent.com/IBM/sms-spam-filter-using-hortonworks/master/notebooks/SpamFilter%20using%20egg%20deploy%20on%20remote%20Spark.jupyter.ipynb
 ```
 
 To add our scripts:
@@ -214,12 +214,12 @@ To add our scripts:
 
 * Add the following scripts:
 ```
-scripts/
-scripts/
-scripts/
-scripts/
-scripts/
-scripts/
+scripts/DataPipeline.py
+scripts/LRModel.py
+scripts/LRModelScikit.py
+scripts/__init__.py
+scripts/setup.py
+scripts/setup2.py
 ```
 
 ### 4. Run the notebooks listed in each scenario to train and deploy the Spam Filter Model
