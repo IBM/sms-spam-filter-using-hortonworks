@@ -171,7 +171,7 @@ For our project, we need to add our notebooks and scripts. To add our notebooks:
 
 * Enter a unique notebook name and use the `From URL` option to load the notebook from the github repo.
 
-![](doc/source/images/dsx-local-create-notebook-1.png)
+![](doc/source/images/dsx-local-create-notebook-3.png)
 
 * Enter this URL:
 
