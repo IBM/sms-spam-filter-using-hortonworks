@@ -259,6 +259,46 @@ Now that we have added our notebooks and scripts, and generated our model, let's
 
 ![](doc/source/images/dsx-local-push-project.png)
 
+### 6. Upload data to remote HDP cluster
+
+![](doc/source/images/Upload-data-remote-cluster.png)
+
+### 7. Connect to remote spark in HDP cluster through DSXHI via sparkmagics library
+
+![](doc/source/images/Connect-remote-cluster-dsxhi-add-endpoint.png)
+
+![](doc/source/images/Connect-remote-cluster-dsxhi-create-session.png)
+
+### 8. Run Spam Filter Pyspark Model in HDP cluster using %% within DSX Local
+
+![](doc/source/images/Executing-in-remote-spark-context.png)
+
+![](doc/source/images/Spark-ML-Model.png)
+
+### 9. Push python virtual environment to remote HDP cluster through DSXHI via sparkmagics library
+
+![](doc/source/images/Push-python-virtual-environment.png)
+
+![](doc/source/images/Push-python-virtual-environment2.png)
+
+### 10. Run Spam Filter python Model in HDP cluster using %% within DSX Local
+
+![](doc/source/images/Python-ML-Model1.png)
+
+![](doc/source/images/Python-ML-Model2.png)
+
+### 11. Build Spam Filter Pyspark egg and execute the LRModel in remote HDP cluster
+
+![](doc/source/images/Build-spam-filter-egg.png)
+
+![](doc/source/images/Run-spam-filter-egg.png)
+
+### 12. Build Spam Filter python egg and execute the LRModelScikit in remote HDP cluster
+
+![](doc/source/images/Build-scikit-egg.png)
+
+![](doc/source/images/Run-scikit-egg.png)
+
 # Troubleshooting
 
 * An error was encountered: Session XX unexpectedly reached final status 'dead'. See logs: java.lang.Exception: No YARN application is found with tag livy-session-XX in 120 seconds. Please check your cluster status, it is may be very busy.
