@@ -134,6 +134,13 @@ Follow these steps to setup the proper environment to run our notebooks locally.
 1. [Create project assets](#3-create-project-assets)
 1. [Run the notebooks listed in each scenario to train and deploy the Spam Filter Model](#4-run-the-notebooks-listed-in-each-scenario-to-train-and-deploy-the-spam-filter-model)
 1. [Commit changes to DSX Local Master Repository](#5-commit-changes-to-dsx-local-master-repository)
+1. [Upload data to remote HDP cluster](#6-Upload-data-to-remote-HDP-cluster)
+1. [Connect to remote spark in HDP cluster through DSXHI via sparkmagics library](#7-Connect-to-remote-spark-in-HDP-cluster-through-DSXHI-via-sparkmagics-library)
+1. [Run Spam Filter Pyspark Model in HDP cluster using %% within DSX Local](#8-Run-Spam-Filter-Pyspark-Model-in-HDP-cluster-using-%%-within-DSX-Local)
+1. [Push python virtual environment to remote HDP cluster through DSXHI via sparkmagics library](#9-Push-python-virtual-environment-to-remote-HDP-cluster-through-DSXHI-via-sparkmagics-library)
+1. [Run Spam Filter python Model in HDP cluster using %% within DSX Local](#10-Run-Spam-Filter-python-Model-in-HDP-cluster-using-%%-within-DSX-Local)
+1. [Build Spam Filter Pyspark egg and execute the LRModel in remote HDP cluster](#11-Build-Spam-Filter-Pyspark-egg-and-execute-the-LRModel-in-remote-HDP-cluster)
+1. [Build Spam Filter python egg and execute the LRModelScikit in remote HDP cluster](#12-Build-Spam-Filter-python-egg-and-execute-the-LRModelScikit-in-remote-HDP-cluster)
 
 
 ### 1. Clone the repo
