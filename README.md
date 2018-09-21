@@ -268,41 +268,75 @@ Now that we have added our notebooks and scripts, and generated our model, let's
 
 ### 6. Upload data to remote HDP cluster
 
+Utilize the `upload_hdfs_file` method from `dsx_core_utils` library available when DSXHI is registered to upload the dataset to the remote HDP cluster.
+
 ![](doc/source/images/Upload-data-remote-cluster.png)
 
 ### 7. Connect to remote spark in HDP cluster through DSXHI via sparkmagics library
 
+Utilize the `sparkmagics` and `dsx_core_utils` library to add the DSXHI endpoint as show below.
+
 ![](doc/source/images/Connect-remote-cluster-dsxhi-add-endpoint.png)
+
+Create a remote session in the `%manage_spark` cell as shown below.
 
 ![](doc/source/images/Connect-remote-cluster-dsxhi-create-session.png)
 
 ### 8. Run Spam Filter Pyspark Model in HDP cluster using %% within DSX Local
 
+With the remote spark session created, use %%spark as a notation which will run the cell contents in remote spark service in HDP cluster.
+
+Note: If you use %spark - it will run the cell contents in local spark in DSX Local
+
 ![](doc/source/images/Executing-in-remote-spark-context.png)
+
+Run the spam filter pyspark model in remote HDP cluster using %%spark in the beginning of the cell.
 
 ![](doc/source/images/Spark-ML-Model.png)
 
 ### 9. Push python virtual environment to remote HDP cluster through DSXHI via sparkmagics library
 
+HDP cluster doesn't natively support third party libraries such as scikit-learn, Keras, Tensor flow etc. 
+
+In order to run the spam filter python model built using scikit-learn library, the python virtual environment used in DSX Local needs to be pushed to the remote HDP cluster as shown below.
+
 ![](doc/source/images/Push-python-virtual-environment.png)
+
+Copy the DSXHI connection properties containing the python virtual environment to the `properties` tab in `%manage_spark` window and create the remote session.
 
 ![](doc/source/images/Push-python-virtual-environment2.png)
 
 ### 10. Run Spam Filter python Model in HDP cluster using %% within DSX Local
 
+With the remote python session created, use %%spark as a notation which will run the cell contents in remote python environemnt in HDP cluster.
+
 ![](doc/source/images/Python-ML-Model1.png)
+
+Run the spam filter python scikit-learn model in remote HDP cluster using %%spark in the beginning of the cell.
 
 ![](doc/source/images/Python-ML-Model2.png)
 
 ### 11. Build Spam Filter Pyspark egg and execute the LRModel in remote HDP cluster
 
+Another approach to running the spam filter model is to package the code that is run via notebooks in previous scenario into a egg file and then distribute the egg file across the remote HDP cluster. 
+
+Once distributed, the model function can be invoked via DSX Local to execute the spam filter model.
+
+After copying the necessary scripts, run the cell below to build the spam filter pyspark egg.
+
 ![](doc/source/images/Build-spam-filter-egg.png)
+
+Connect to remote spark in HDP cluster and run the LRModel function using %%spark as notation to execute the spam filter pyspark model.
 
 ![](doc/source/images/Run-spam-filter-egg.png)
 
 ### 12. Build Spam Filter python egg and execute the LRModelScikit in remote HDP cluster
 
+After copying the necessary scripts, run the cell below to build the spam filter scikit-learn egg.
+
 ![](doc/source/images/Build-scikit-egg.png)
+
+Connect to remote spark in HDP cluster and run the LRModelScikit function using %%spark as notation to execute the spam filter scikit-learn model.
 
 ![](doc/source/images/Run-scikit-egg.png)
 
