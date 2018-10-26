@@ -90,7 +90,7 @@ When you have completed this code pattern, you will understand how to:
 * Use the `sparkmagics` library to push the python virtual environment containing the Scikit-learn library to the remote HDP cluster via the Hadoop Integration service.
 * Package the Spam Filter model as a python egg and distribute the egg to the remote HDP cluster via the Hadoop Integration service.
 * Run the Spam Filter Model (both pyspark and Scikit-learn versions) in the remote HDP cluster utilizing the remote Spark context and the remote python virtual environment, all from within IBM Watson Studio Local.
-* Save the Spam Filter Model in reomte HDP cluster and import it back to Watson Studio Local and batch score and evaluate the model
+* Save the Spam Filter Model in remote HDP cluster and import it back to Watson Studio Local and batch score and evaluate the model
 
 ## Flow
 
@@ -409,7 +409,7 @@ Connect to remote Spark in HDP cluster and run the LRModelScikit function using 
 
 ![](doc/source/images/evaluate-model-2.png)
 
-![](doc/source/imagesjobs-list.png)
+![](doc/source/images/jobs-list.png)
 
 # Troubleshooting
 
