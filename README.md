@@ -40,11 +40,13 @@ As mentioned earlier, this code pattern offers three examples of how to develop,
   `"Spam Filter on local spark"`
     - Load the spam collection dataset using Spark context in Watson Studio Local.
     - Use Spark Data Pipeline to extract the TF-IDF features and use Spark MLlib to train the Spam Filter pyspark model locally.
+    - Save the Spam Filter pyspark model in Watson Studio Local.
 
   `"Spam Filter on remote spark"`
     - Push the spam collection dataset to the remote HDFS user directory in the HDP cluster.
     - Connect to the remote Spark context in the HDP cluster via the Hadoop Integration service using the sparkmagics library.
     - Uses `%%spark` to run the remote Spark context to load, extract and train the Spam Filter pyspark model in the HDP cluster.
+    - Save the Spam Filter pyspark model in HDP cluter and import the model into Wastson Studio Local.
 
 * Develop and train a Spam Filter using the 3rd-party library Scikit-learn.
 
@@ -88,6 +90,7 @@ When you have completed this code pattern, you will understand how to:
 * Use the `sparkmagics` library to push the python virtual environment containing the Scikit-learn library to the remote HDP cluster via the Hadoop Integration service.
 * Package the Spam Filter model as a python egg and distribute the egg to the remote HDP cluster via the Hadoop Integration service.
 * Run the Spam Filter Model (both pyspark and Scikit-learn versions) in the remote HDP cluster utilizing the remote Spark context and the remote python virtual environment, all from within IBM Watson Studio Local.
+* Save the Spam Filter Model in reomte HDP cluster and import it back to Watson Studio Local and batch score and evaluate the model
 
 ## Flow
 
@@ -371,6 +374,42 @@ After copying the necessary scripts, run the cell below to build the Spam Filter
 Connect to remote Spark in HDP cluster and run the LRModelScikit function using %%spark as notation to execute the Spam Filter scikit-learn model.
 
 ![](doc/source/images/Run-scikit-egg.png)
+
+#### 8. Save the Spam Filter Pyspark Model in Watson Studio Local
+
+![](doc/source/images/save-model-local.png)
+
+#### 9. Save the Spam Filter Pyspark Model in remote HDP cluster
+
+![](doc/source/images/save-mode-remote-1.png)
+
+![](doc/source/images/save-model-remote-2.png)
+
+#### 10. Import the Spam Filter Pyspark Model from remote HDP cluster into Watson Studio Local
+
+![](doc/source/images/save-model-remote-3.png)
+
+![](doc/source/images/save-model-remote-4.png)
+
+![](doc/source/images/models-screenshot.png)
+
+#### 11. Batch score the Spam Filter Pyspark Model
+
+![](doc/source/images/real-time-scoring.png)
+
+![](doc/source/images/batch-scoring-1.png)
+
+![](doc/source/images/batch-scoring-2.png)
+
+![](doc/source/images/data-list.png)
+
+#### 12. Evaluate the Spam Filter Pyspark Model
+
+![](doc/source/images/evaluate-model-1.png)
+
+![](doc/source/images/evaluate-model-2.png)
+
+![](doc/source/imagesjobs-list.png)
 
 # Troubleshooting
 
