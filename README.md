@@ -40,11 +40,13 @@ As mentioned earlier, this code pattern offers three examples of how to develop,
   `"Spam Filter on local spark"`
     - Load the spam collection dataset using Spark context in Watson Studio Local.
     - Use Spark Data Pipeline to extract the TF-IDF features and use Spark MLlib to train the Spam Filter pyspark model locally.
+    - Save the Spam Filter pyspark model in Watson Studio Local.
 
   `"Spam Filter on remote spark"`
     - Push the spam collection dataset to the remote HDFS user directory in the HDP cluster.
     - Connect to the remote Spark context in the HDP cluster via the Hadoop Integration service using the sparkmagics library.
     - Uses `%%spark` to run the remote Spark context to load, extract and train the Spam Filter pyspark model in the HDP cluster.
+    - Save the Spam Filter pyspark model in HDP cluster and import the model into Watson Studio Local.
 
 * Develop and train a Spam Filter using the 3rd-party library Scikit-learn.
 
@@ -88,6 +90,7 @@ When you have completed this code pattern, you will understand how to:
 * Use the `sparkmagics` library to push the python virtual environment containing the Scikit-learn library to the remote HDP cluster via the Hadoop Integration service.
 * Package the Spam Filter model as a python egg and distribute the egg to the remote HDP cluster via the Hadoop Integration service.
 * Run the Spam Filter Model (both pyspark and Scikit-learn versions) in the remote HDP cluster utilizing the remote Spark context and the remote python virtual environment, all from within IBM Watson Studio Local.
+* Save the Spam Filter Model in remote HDP cluster and import it back to Watson Studio Local and batch score and evaluate the model
 
 ## Flow
 
@@ -371,6 +374,68 @@ After copying the necessary scripts, run the cell below to build the Spam Filter
 Connect to remote Spark in HDP cluster and run the LRModelScikit function using %%spark as notation to execute the Spam Filter scikit-learn model.
 
 ![](doc/source/images/Run-scikit-egg.png)
+
+#### 8. Save the Spam Filter Pyspark Model in Watson Studio Local
+
+Use the save function in `dsx_ml.ml` library to save the Spam Filter pyspark model with the name `LRModel_SparkLocal`.
+
+![](doc/source/images/save-model-local.png)
+
+#### 9. Save the Spam Filter Pyspark Model in remote HDP cluster
+
+After training the model (step 3) in remote HDP cluster, the model exists in the memory of the remote session. Write the model to a HDFS location and copy it to local node as shown below.
+
+![](doc/source/images/save-mode-remote-1.png)
+
+Create an archive of the model directory and push the archive back to HDFS.
+
+![](doc/source/images/save-model-remote-2.png)
+
+#### 10. Import the Spam Filter Pyspark Model from remote HDP cluster into Watson Studio Local
+
+In order to use the Pyspark model saved in the remote HDP cluster, you need to import into Watson Studio Local. Download the moddel archive from HDFS to a temporary directory in Watson Studio Local using the method provided in `hdfs_util` library.
+
+![](doc/source/images/save-model-remote-3.png)
+
+Unpack the model archive and load the model into memory in Watson Studio Local environment and then save the model using `dsx_ml.ml` library 
+
+![](doc/source/images/save-model-remote-4.png)
+
+You can now see the saved model `LRModel_SparkRemote` in the `Models` tab. 
+
+![](doc/source/images/models-screenshot.png)
+
+#### 11. Batch score the Spam Filter Pyspark Model
+
+Click any one of the above models to test and score. Provide a test message as `Input` and press `submit` to do a real-time scoring.
+
+![](doc/source/images/real-time-scoring.png)
+
+Select the `Execution Type`, `Input data set` and `Output data set` and click `Generate batch script` to do a batch scoring run.
+
+![](doc/source/images/batch-scoring-1.png)
+
+Refresh the page and check the status of the job.
+
+![](doc/source/images/batch-scoring-2.png)
+
+Go to the `Datasets` tab to view the Output file.
+
+![](doc/source/images/data-list.png)
+
+#### 12. Evaluate the Spam Filter Pyspark Model
+
+Choose the `Evaluate` tab and provide `Input data set`, `Evaluator`, `Threshold metric` and click `Generate evaluation script` to evaluate the model.
+
+![](doc/source/images/evaluate-model-1.png)
+
+Refresh the page and check the status of the job.
+
+![](doc/source/images/evaluate-model-2.png)
+
+You can check the list of batch scoring and model evaluation scripts created in the `Jobs` tab in the main page of the project folder.
+
+![](doc/source/images/jobs-list.png)
 
 # Troubleshooting
 
