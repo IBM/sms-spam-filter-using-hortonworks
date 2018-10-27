@@ -46,7 +46,7 @@ As mentioned earlier, this code pattern offers three examples of how to develop,
     - Push the spam collection dataset to the remote HDFS user directory in the HDP cluster.
     - Connect to the remote Spark context in the HDP cluster via the Hadoop Integration service using the sparkmagics library.
     - Uses `%%spark` to run the remote Spark context to load, extract and train the Spam Filter pyspark model in the HDP cluster.
-    - Save the Spam Filter pyspark model in HDP cluter and import the model into Wastson Studio Local.
+    - Save the Spam Filter pyspark model in HDP cluster and import the model into Watsson Studio Local.
 
 * Develop and train a Spam Filter using the 3rd-party library Scikit-learn.
 
@@ -383,7 +383,7 @@ Use the save function in `dsx_ml.ml` library to save the Spam Filter pyspark mod
 
 #### 9. Save the Spam Filter Pyspark Model in remote HDP cluster
 
-After training the model (step 3) in remote HDP cluster, the model exists in the memory of the remote session. Write the model to a HDFS location and copy it to local node as show below.
+After training the model (step 3) in remote HDP cluster, the model exists in the memory of the remote session. Write the model to a HDFS location and copy it to local node as shown below.
 
 ![](doc/source/images/save-mode-remote-1.png)
 
@@ -407,11 +407,11 @@ You can now see the saved model `LRModel_SparkRemote` in the `Models` tab.
 
 #### 11. Batch score the Spam Filter Pyspark Model
 
-Click any one of the above models to test and score. Provide a test message as `Input` and press `submit` to do a real time scoring.
+Click any one of the above models to test and score. Provide a test message as `Input` and press `submit` to do a real-time scoring.
 
 ![](doc/source/images/real-time-scoring.png)
 
-Select the `Execution Type`, `Input data set` and `Output data set` and click `Generate batch script` to do a batch scoring.
+Select the `Execution Type`, `Input data set` and `Output data set` and click `Generate batch script` to do a batch scoring run.
 
 ![](doc/source/images/batch-scoring-1.png)
 
