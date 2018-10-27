@@ -46,7 +46,7 @@ As mentioned earlier, this code pattern offers three examples of how to develop,
     - Push the spam collection dataset to the remote HDFS user directory in the HDP cluster.
     - Connect to the remote Spark context in the HDP cluster via the Hadoop Integration service using the sparkmagics library.
     - Uses `%%spark` to run the remote Spark context to load, extract and train the Spam Filter pyspark model in the HDP cluster.
-    - Save the Spam Filter pyspark model in HDP cluster and import the model into Watsson Studio Local.
+    - Save the Spam Filter pyspark model in HDP cluster and import the model into Watson Studio Local.
 
 * Develop and train a Spam Filter using the 3rd-party library Scikit-learn.
 
