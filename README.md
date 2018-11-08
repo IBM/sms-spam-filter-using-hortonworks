@@ -26,7 +26,7 @@ First, some background:
 
 > **What is IBM Watson Studio Local?** Watson Studio Local is an on-premises solution for data scientists and data engineers. It offers a suite of data science tools that integrate with RStudio, Spark, Jupyter, and Zeppelin notebook technologies. And yes, it can be configured to use HDP, too.
 
-> **What is the IBM Hadoop Integration service?** A service that can be installed on a Hadoop edge node to allow Watson Studio Local (version 1.2 or later) clusters to securely access data residing on the Hadoop cluster, submit interactive Spark jobs, build models, and schedule jobs that run as a YARN application on the Hadoop cluster.<br><br>
+> **What is the IBM Hadoop Integration service?** A service that can be installed on a Hadoop edge node to allow Watson Studio Local (version 1.2 or later) clusters to securely access data residing on the Hadoop cluster, submit interactive Spark jobs, build models, and schedule jobs that run as a YARN application on the Hadoop cluster.
 > **NOTE:** The Hadoop Integration service was previously referred to as DSXHI, and that acronym may still be used in some older documentation links and code snippets.
 
 This code pattern contains 8 Jupyter notebooks and 6 scripts. Here is a view of the notebooks as shown by the Watson Studio Local UI:
@@ -72,7 +72,7 @@ As mentioned earlier, this code pattern offers three examples of how to develop,
     - Use `%%spark` to run the functions provided by PySpark egg to train the Spam Filter model in the HDP cluster.
 
   `"Building the Spam Filter Scikit Egg"`
-    - Builds the Spam Filter python (scikit) model as an egg using the provided script.<br>
+    - Builds the Spam Filter python (scikit) model as an egg using the provided script.
 
   `"SpamFilter Scikit using egg deploy on remote Spark"`
     - Push the spam collection dataset to the remote HDFS user directory in the HDP cluster.
