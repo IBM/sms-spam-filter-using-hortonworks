@@ -12,7 +12,7 @@ Note: All the development and training included below, including references to t
 
 * Develop and train a Spam Filter Model using the 3rd-party library Scikit-learn, both locally (using Scikit-learn provided by Watson Studio Local) and remotely (by leveraging the compute in the HDP cluster).
 
-* Package the Spam Filter Model as a python egg in Watson Studio Local, then train and deploy the model package levaraging both the remote Spark and compute in the HDP cluster.
+* Package the Spam Filter Model as a python egg in Watson Studio Local, then train and deploy the model package leveraging both the remote Spark and compute in the HDP cluster.
 
 In order for Watson Studio Local to be able to utilize the resources (both Spark and compute) of the HDP cluster, the IBM Hadoop Integration service must be installed on the edge node of the HDP cluster and must be registered with Watson Studio Local.
 
@@ -26,7 +26,7 @@ First, some background:
 
 > **What is IBM Watson Studio Local?** Watson Studio Local is an on premises solution for data scientists and data engineers. It offers a suite of data science tools that integrate with RStudio, Spark, Jupyter, and Zeppelin notebook technologies. And yes, it can be configured to use HDP, too.
 
-> **What is the IBM Hadoop Integration service?** A service that can be installed on a Hadoop edge node to allow Watson Studio Local (version 1.2 or later) clusters to securely access data residing on the Hadoop cluster, submit interactive Spark jobs, build models, and schedule jobs that run as a YARN application on the Hadoop cluster.<br><br>
+> **What is the IBM Hadoop Integration service?** A service that can be installed on a Hadoop edge node to allow Watson Studio Local (version 1.2 or later) clusters to securely access data residing on the Hadoop cluster, submit interactive Spark jobs, build models, and schedule jobs that run as a YARN application on the Hadoop cluster.
 > **NOTE:** The Hadoop Integration service was previously referred to as DSXHI, and that acronym may still be used in some older documentation links and code snippets.
 
 This code pattern contains 8 jupyter notebooks and 6 scripts. Here is a view of the notebooks as shown by the Watson Studio Local UI:
@@ -72,7 +72,7 @@ As mentioned earlier, this code pattern offers three examples of how to develop,
     - Use `%%spark` to run the functions provided by pyspark egg to train the Spam Filter model in the HDP cluster.
 
   `"Building the Spam Filter Scikit Egg"`
-    - Builds the Spam Filter python (scikit) model as an egg using provided script.<br>
+    - Builds the Spam Filter python (scikit) model as an egg using provided script.
 
   `"SpamFilter Scikit using egg deploy on remote Spark"`
     - Push the spam collection dataset to the remote HDFS user directory in the HDP cluster.
@@ -251,7 +251,7 @@ To add our data set:
 
 ### 4. Commit changes to Watson Studio Local Master Repository
 
-After making changes to your project, you will be occasionally reminded to commit and push your changes to the Watson Studio Local Master Repoisory.
+After making changes to your project, you will be occasionally reminded to commit and push your changes to the Watson Studio Local Master Repository.
 
 ![](doc/source/images/dsx-local-commit-request.png)
 
