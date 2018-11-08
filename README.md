@@ -8,45 +8,45 @@ This code pattern provides three different examples or illustrations to tackle t
 
 Note: All the development and training included below, including references to the HDP cluster, are initiated from within IBM's Watson Studio Local.
 
-* Develop and train a Spam Filter Model using pyspark, both locally (using local Spark ML provided by Watson Studio Local) and remotely (by leveraing the remote Spark in the HDP cluster).
+* Develop and train a Spam Filter Model using PySpark, both locally (using local Spark ML provided by Watson Studio Local) and remotely (by leveraging the remote Spark in the HDP cluster).
 
 * Develop and train a Spam Filter Model using the 3rd-party library Scikit-learn, both locally (using Scikit-learn provided by Watson Studio Local) and remotely (by leveraging the compute in the HDP cluster).
 
 * Package the Spam Filter Model as a python egg in Watson Studio Local, then train and deploy the model package leveraging both the remote Spark and compute in the HDP cluster.
 
-In order for Watson Studio Local to be able to utilize the resources (both Spark and compute) of the HDP cluster, the IBM Hadoop Integration service must be installed on the edge node of the HDP cluster and must be registered with Watson Studio Local.
+For Watson Studio Local to be able to utilize the resources (both Spark and compute) of the HDP cluster, the IBM Hadoop Integration service must be installed on the edge node of the HDP cluster and must be registered with Watson Studio Local.
 
 First, some background:
 
-> **What is HDP?** Hortonworks Data Platform (HDP) is a massively scalable platform for storing, processing and analyzing large volumes of data. HDP consists of the essential set of Apache Hadoop projects including MapReduce, Hadoop Distributed File System (HDFS), HCatalog, Pig, Hive, HBase, Zookeeper and Ambari.
+> **What is HDP?** Hortonworks Data Platform (HDP) is a massively scalable platform for storing, processing and analyzing large volumes of data. HDP consists of the essential set of Apache Hadoop projects including MapReduce, Hadoop Distributed File System (HDFS), HCatalog, Pig, Hive, HBase, Zookeeper, and Ambari.
 
   ![](doc/source/images/hdp_arch.png)
 
    *Hortonworks Data Platform by [Hortonworks](https://hortonworks.com/products/data-platforms/hdp/)*
 
-> **What is IBM Watson Studio Local?** Watson Studio Local is an on premises solution for data scientists and data engineers. It offers a suite of data science tools that integrate with RStudio, Spark, Jupyter, and Zeppelin notebook technologies. And yes, it can be configured to use HDP, too.
+> **What is IBM Watson Studio Local?** Watson Studio Local is an on-premises solution for data scientists and data engineers. It offers a suite of data science tools that integrate with RStudio, Spark, Jupyter, and Zeppelin notebook technologies. And yes, it can be configured to use HDP, too.
 
 > **What is the IBM Hadoop Integration service?** A service that can be installed on a Hadoop edge node to allow Watson Studio Local (version 1.2 or later) clusters to securely access data residing on the Hadoop cluster, submit interactive Spark jobs, build models, and schedule jobs that run as a YARN application on the Hadoop cluster.
 > **NOTE:** The Hadoop Integration service was previously referred to as DSXHI, and that acronym may still be used in some older documentation links and code snippets.
 
-This code pattern contains 8 jupyter notebooks and 6 scripts. Here is a view of the notebooks as shown by the Watson Studio Local UI:
+This code pattern contains 8 Jupyter notebooks and 6 scripts. Here is a view of the notebooks as shown by the Watson Studio Local UI:
 
 ![](doc/source/images/Jupyter-notebooks-list.png)
 
 As mentioned earlier, this code pattern offers three examples of how to develop, train, and deploy a Spam Filter Model. For each example, multiple notebooks will be provided to show both a local (Watson Studio Local) and remote (HDP cluster) solution. The following lists the associated notebooks for each:
 
-* Develop and train a Spam Filter using pyspark.
+* Develop and train a Spam Filter using PySpark.
 
   `"Spam Filter on local spark"`
     - Load the spam collection dataset using Spark context in Watson Studio Local.
-    - Use Spark Data Pipeline to extract the TF-IDF features and use Spark MLlib to train the Spam Filter pyspark model locally.
-    - Save the Spam Filter pyspark model in Watson Studio Local.
+    - Use Spark Data Pipeline to extract the TF-IDF features and use Spark MLlib to train the Spam Filter PySpark model locally.
+    - Save the Spam Filter PySpark model in Watson Studio Local.
 
   `"Spam Filter on remote spark"`
     - Push the spam collection dataset to the remote HDFS user directory in the HDP cluster.
     - Connect to the remote Spark context in the HDP cluster via the Hadoop Integration service using the sparkmagics library.
-    - Uses `%%spark` to run the remote Spark context to load, extract and train the Spam Filter pyspark model in the HDP cluster.
-    - Save the Spam Filter pyspark model in HDP cluster and import the model into Watson Studio Local.
+    - Uses `%%spark` to run the remote Spark context to load, extract and train the Spam Filter PySpark model in the HDP cluster.
+    - Save the Spam Filter PySpark model in HDP cluster and import the model into Watson Studio Local.
 
 * Develop and train a Spam Filter using the 3rd-party library Scikit-learn.
 
@@ -62,17 +62,17 @@ As mentioned earlier, this code pattern offers three examples of how to develop,
 * Package a Spam Filter model as a python egg, then train and deploy the model package remotely in the HDP cluster.
 
   `"Building the Spam Filter Egg"`
-    - Builds the Spam Filter pyspark model as an egg using provided scripts.
+    - Builds the Spam Filter PySpark model as an egg using the provided scripts.
 
   `"SpamFilter using egg deploy on remote Spark"`
     - Push the spam collection dataset to the remote HDFS user directory in the HDP cluster.
-    - Push the pyspark egg to the remote HDFS user directory in the HDP cluster.
+    - Push the PySpark egg to the remote HDFS user directory in the HDP cluster.
     - Connect to remote Spark context in HDP cluster via the Hadoop Integration service using the sparkmagics library.
-    - Use `%%spark` to deploy the pyspark egg to the remote HDP cluster.
-    - Use `%%spark` to run the functions provided by pyspark egg to train the Spam Filter model in the HDP cluster.
+    - Use `%%spark` to deploy the PySpark egg to the remote HDP cluster.
+    - Use `%%spark` to run the functions provided by PySpark egg to train the Spam Filter model in the HDP cluster.
 
   `"Building the Spam Filter Scikit Egg"`
-    - Builds the Spam Filter python (scikit) model as an egg using provided script.
+    - Builds the Spam Filter python (scikit) model as an egg using the provided script.
 
   `"SpamFilter Scikit using egg deploy on remote Spark"`
     - Push the spam collection dataset to the remote HDFS user directory in the HDP cluster.
@@ -85,11 +85,11 @@ As mentioned earlier, this code pattern offers three examples of how to develop,
 When you have completed this code pattern, you will understand how to:
 
 * Load data into Spark DataFrames and use Spark's machine learning library (MLlib) to develop, train and deploy the Spam Filter Model.
-* Load the data into pandas DataFrames and use Scikit-learn machine learning lbrary to develop, train and deploy the Spam Filter Model.
+* Load the data into pandas DataFrames and use Scikit-learn machine learning library to develop, train and deploy the Spam Filter Model.
 * Use the `sparkmagics` library to connect to the remote Spark service in the HDP cluster via the Hadoop Integration service.
 * Use the `sparkmagics` library to push the python virtual environment containing the Scikit-learn library to the remote HDP cluster via the Hadoop Integration service.
 * Package the Spam Filter model as a python egg and distribute the egg to the remote HDP cluster via the Hadoop Integration service.
-* Run the Spam Filter Model (both pyspark and Scikit-learn versions) in the remote HDP cluster utilizing the remote Spark context and the remote python virtual environment, all from within IBM Watson Studio Local.
+* Run the Spam Filter Model (both PySpark and Scikit-learn versions) in the remote HDP cluster utilizing the remote Spark context and the remote python virtual environment, all from within IBM Watson Studio Local.
 * Save the Spam Filter Model in remote HDP cluster and import it back to Watson Studio Local and batch score and evaluate the model
 
 ## Flow
@@ -99,17 +99,17 @@ When you have completed this code pattern, you will understand how to:
 This diagram depicts the major components and actions that make-up the Watson Studio Local and HDP cluster environment.
 
 1. The spam collection data set is loaded into Watson Studio Local as an asset.
-2. The user interacts with the Jupyter notebooks by running them in Watson Studio Local. Watson Studio Local can either use the resources available locally, or ...
+2. The user interacts with the Jupyter notebooks by running them in Watson Studio Local. Watson Studio Local can either use the resources available locally or ...
 3. Utilize HDP cluster resources by connecting to Apache Livy, which is a part of the Hadoop Integration service.
 4. Livy connects with the HDP cluster to run Apache Spark or access HDFS files.
 
 ## Included components
 
-* [IBM Watson Studio Local](https://content-dsxlocal.mybluemix.net/docs/content/local/overview.html): An out-of-the-box on premises solution for data scientists and data engineers. It offers a suite of data science tools that integrate with RStudio, Spark, Jupyter, and Zeppelin notebook technologies.
+* [IBM Watson Studio Local](https://content-dsxlocal.mybluemix.net/docs/content/local/overview.html): An out-of-the-box on-premises solution for data scientists and data engineers. It offers a suite of data science tools that integrate with RStudio, Spark, Jupyter, and Zeppelin notebook technologies.
 * [Apache Spark](http://spark.apache.org/): An open-source, fast and general-purpose cluster computing system.
-* [Hortonworks Data Platform (HDP)](https://hortonworks.com/products/data-platforms/hdp/): HDP is a massively scalable platform for storing, processing and analyzing large volumes of data. HDP consists of the essential set of Apache Hadoop projects including MapReduce, Hadoop Distributed File System (HDFS), HCatalog, Pig, Hive, HBase, Zookeeper and Ambari.
+* [Hortonworks Data Platform (HDP)](https://hortonworks.com/products/data-platforms/hdp/): HDP is a massively scalable platform for storing, processing and analyzing large volumes of data. HDP consists of the essential set of Apache Hadoop projects including MapReduce, Hadoop Distributed File System (HDFS), HCatalog, Pig, Hive, HBase, Zookeeper, and Ambari.
 * [Apache Livy](https://livy.incubator.apache.org/): Apache Livy is a service that enables easy interaction with a Spark cluster over a REST interface.
-* [Jupyter Notebooks](http://jupyter.org/): An open-source web application that allows you to create and share documents that contain live code, equations, visualizations and explanatory text.
+* [Jupyter Notebooks](http://jupyter.org/): An open-source web application that allows you to create and share documents that contain live code, equations, visualizations, and explanatory text.
 
 ## Featured technologies
 
@@ -122,7 +122,7 @@ This diagram depicts the major components and actions that make-up the Watson St
 
 The core of this code pattern is integrating Hortonworks Data Platform (HDP) and IBM Watson Studio Local. If you do not already have an HDP cluster available for use, you will need to install one before attempting to complete the code pattern. 
 
-To install [HDP v2.6.4](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.4/index.html), please follow the [installation guide](https://docs.hortonworks.com/HDPDocuments/Ambari-2.6.1.5/bk_ambari-installation/content/ch_Getting_Ready.html) provided by Hortonworks. It first requires the installation of the [Apache Ambari](https://ambari.apache.org/) management platform which is then used to faciliate the HDP cluster installation.
+To install [HDP v2.6.4](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.4/index.html), please follow the [installation guide](https://docs.hortonworks.com/HDPDocuments/Ambari-2.6.1.5/bk_ambari-installation/content/ch_Getting_Ready.html) provided by Hortonworks. It first requires the installation of the [Apache Ambari](https://ambari.apache.org/) management platform which is then used to facilitate the HDP cluster installation.
 
 > Note: Ensure that your Ambari Server is configured to use `Python v2.7`.
 
@@ -152,7 +152,7 @@ https://content-dsxlocal.mybluemix.net/docs/content/local/hadoopintegration.html
 
 # Steps
 
-Follow these steps to setup the proper environment to run our notebooks locally.
+Follow these steps to set up the proper environment to run our notebooks locally.
 
 1. [Clone the repo](#1-clone-the-repo)
 1. [Create project in IBM Watson Studio Local](#2-create-project-in-ibm-watson-studio-local)
@@ -168,7 +168,7 @@ git clone https://github.com/IBM/sms-spam-filter-using-hortonworks.git
 
 In Watson Studio Local, we use projects as a container for all of our related assets. To create a project:
 
-* From the Watson Studio Local home page, select the `Add Project` button.
+* From the Watson Studio Local homepage, select the `Add Project` button.
 
 ![](doc/source/images/dsx-local-project-list.png)
 
@@ -182,11 +182,11 @@ Once created, you can view all of the project assets by selecting the `Assets` t
 
 ![](doc/source/images/dsx-local-notebook-list.png)
 
-For our project, we need to add our notebooks, scripts, and data sets. To add our notebooks:
+For our project, we need to add our notebooks, scripts, and datasets. To add our notebooks:
 
 * Select `Notebooks` in the project `Assets` list, then press the `Add Notebook` button.
 
-* Enter a unique notebook name and use the `From URL` option to load the notebook from the github repo.
+* Enter a unique notebook name and use the `From URL` option to load the notebook from the GitHub repo.
 
 ![](doc/source/images/dsx-local-create-notebook-3.png)
 
@@ -241,7 +241,7 @@ scripts/setup.py
 scripts/setup2.py
 ```
 
-To add our data set:
+To add our dataset:
 
 * Select `Data sets` in the project `Assets` list, then press the `Add Data Set` button.
 
@@ -293,11 +293,11 @@ format is `In [x]:`. Depending on the state of the notebook, the `x` can be:
 
 As described above, this code pattern provides 3 examples of solving the Spam Filter problem. And each of the examples consists of multiple notebooks. We recommend that you run all of them to see the multiple ways to build, train and deploy a model, and for  accessing resources on the remote HDP cluster.
 
-While each of the notebooks is well documented, the are some actions that will be covered in more detail below.
+While each of the notebooks is well documented, some actions will be covered in more detail below.
 
 #### 1. Upload data to remote HDP cluster
 
-To upload data from the Watson Studio Local cluster to the HDP cluster, utilize the `upload_hdfs_file` method from `dsx_core_utils` library. This is only available when the Hadoop Integration service is registered to upload the dataset to the remote HDP cluster.
+To upload data from the Watson Studio Local cluster to the HDP cluster, utilize the `upload_hdfs_file` method from the `dsx_core_utils` library. This is only available when the Hadoop Integration service is registered to upload the dataset to the remote HDP cluster.
 
 ![](doc/source/images/Upload-data-remote-cluster.png)
 
@@ -317,7 +317,7 @@ Then create a remote session as shown below.
 
 > Note: Be patient - it may take a few minutes.
 
-#### 3. Run Spam Filter Pyspark Model in HDP cluster using %% within Watson Studio Local
+#### 3. Run Spam Filter PySpark Model in HDP cluster using %% within Watson Studio Local
 
 With the remote Spark session created, use %%spark as a notation which will run the cell contents in remote Spark service in the HDP cluster.
 
@@ -325,7 +325,7 @@ Note: If you use %spark - it will run the cell contents in local Spark in Watson
 
 ![](doc/source/images/Executing-in-remote-spark-context.png)
 
-Run the Spam Filter pyspark model in remote HDP cluster using %%spark in the beginning of the cell.
+Run the Spam Filter PySpark model in remote HDP cluster using %%spark at the beginning of the cell.
 
 ![](doc/source/images/Spark-ML-Model.png)
 
@@ -343,25 +343,25 @@ Copy the Hadoop Integration service connection properties containing the python 
 
 #### 5. Run Spam Filter python Model in HDP cluster using %% within Watson Studio Local
 
-With the remote python session created, use %%spark as a notation which will run the cell contents in remote python environemnt in HDP cluster.
+With the remote python session created, use %%spark as a notation which will run the cell contents in remote python environment in HDP cluster.
 
 ![](doc/source/images/Python-ML-Model1.png)
 
-Run the spam filter python scikit-learn model in the remote HDP cluster using %%spark in the beginning of the cell.
+Run the spam filter python scikit-learn model in the remote HDP cluster using %%spark at the beginning of the cell.
 
 ![](doc/source/images/Python-ML-Model2.png)
 
 #### 6. Build Spam Filter Pyspark egg and execute the LRModel in remote HDP cluster
 
-Another approach to running the Spam Filter model is to package the code that is run via notebooks in previous examples into a egg file and then distribute the egg file across the remote HDP cluster.
+Another approach to running the Spam Filter model is to package the code that is run via notebooks in previous examples into an egg file and then distribute the egg file across the remote HDP cluster.
 
 Once distributed, the model function can be invoked via Watson Studio Local to execute the Spam Filter model.
 
-After copying the necessary scripts, run the cell below to build the Spam Filter pyspark egg.
+After copying the necessary scripts, run the cell below to build the Spam Filter PySpark egg.
 
 ![](doc/source/images/Build-spam-filter-egg.png)
 
-Connect to remote Spark in HDP cluster and run the LRModel function using %%spark as notation to execute the Spam Filter pyspark model.
+Connect to remote Spark in HDP cluster and run the LRModel function using %%spark as notation to execute the Spam Filter PySpark model.
 
 ![](doc/source/images/Run-spam-filter-egg.png)
 
@@ -375,15 +375,15 @@ Connect to remote Spark in HDP cluster and run the LRModelScikit function using 
 
 ![](doc/source/images/Run-scikit-egg.png)
 
-#### 8. Save the Spam Filter Pyspark Model in Watson Studio Local
+#### 8. Save the Spam Filter PySpark Model in Watson Studio Local
 
-Use the save function in `dsx_ml.ml` library to save the Spam Filter pyspark model with the name `LRModel_SparkLocal`.
+Use the save function in `dsx_ml.ml` library to save the Spam Filter PySpark model with the name `LRModel_SparkLocal`.
 
 ![](doc/source/images/save-model-local.png)
 
-#### 9. Save the Spam Filter Pyspark Model in remote HDP cluster
+#### 9. Save the Spam Filter PySpark Model in remote HDP cluster
 
-After training the model (step 3) in remote HDP cluster, the model exists in the memory of the remote session. Write the model to a HDFS location and copy it to local node as shown below.
+After training the model (step 3) in remote HDP cluster, the model exists in the memory of the remote session. Write the model to an HDFS location and copy it to the local node as shown below.
 
 ![](doc/source/images/save-mode-remote-1.png)
 
@@ -391,9 +391,9 @@ Create an archive of the model directory and push the archive back to HDFS.
 
 ![](doc/source/images/save-model-remote-2.png)
 
-#### 10. Import the Spam Filter Pyspark Model from remote HDP cluster into Watson Studio Local
+#### 10. Import the Spam Filter PySpark Model from remote HDP cluster into Watson Studio Local
 
-In order to use the Pyspark model saved in the remote HDP cluster, you need to import into Watson Studio Local. Download the moddel archive from HDFS to a temporary directory in Watson Studio Local using the method provided in `hdfs_util` library.
+In order to use the PySpark model saved in the remote HDP cluster, you need to import into Watson Studio Local. Download the moddel archive from HDFS to a temporary directory in Watson Studio Local using the method provided in the `hdfs_util` library.
 
 ![](doc/source/images/save-model-remote-3.png)
 
@@ -405,7 +405,7 @@ You can now see the saved model `LRModel_SparkRemote` in the `Models` tab.
 
 ![](doc/source/images/models-screenshot.png)
 
-#### 11. Batch score the Spam Filter Pyspark Model
+#### 11. Batch score the Spam Filter PySpark Model
 
 Click any one of the above models to test and score. Provide a test message as `Input` and press `submit` to do a real-time scoring.
 
@@ -423,7 +423,7 @@ Go to the `Datasets` tab to view the Output file.
 
 ![](doc/source/images/data-list.png)
 
-#### 12. Evaluate the Spam Filter Pyspark Model
+#### 12. Evaluate the Spam Filter PySpark Model
 
 Choose the `Evaluate` tab and provide `Input data set`, `Evaluator`, `Threshold metric` and click `Generate evaluation script` to evaluate the model.
 
